@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:amazonclone/constants/GlobeColor.dart';
+import 'package:amazonclone/routes.dart';
 import 'package:amazonclone/screens/Auth/AuthScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +17,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Amazon Clone',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: GlobalColors.globalBackgroundColor,
+        colorScheme:
+            ColorScheme.light(primary: GlobalColors.globalPrimaryColor),
+        appBarTheme: AppBarTheme(
+            elevation: 0, iconTheme: IconThemeData(color: Colors.black)),
       ),
+      onGenerateRoute: (settings) => generateRoutes(routeSettings: settings),
       home: AuthScreen(),
     );
   }
