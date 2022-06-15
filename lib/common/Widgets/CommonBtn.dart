@@ -13,7 +13,9 @@ class CommonBtn extends StatelessWidget {
     return Container(
 
       child: ElevatedButton(
-          onPressed: OnpressedFunc, child: Text(BtnName)),
+          onPressed: OnpressedFunc, child: Text(BtnName), style: ElevatedButton.styleFrom(
+            maximumSize: const Size(double.maxFinite, 50)
+          ),),
     );
   }
 }

@@ -25,7 +25,7 @@ class _CommonInPutFeildState extends State<CommonInPutFeild> {
       decoration: InputDecoration(
         label: Text(widget.label),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
     );

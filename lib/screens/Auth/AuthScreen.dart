@@ -25,6 +25,14 @@ class _AuthScreenState extends State<AuthScreen> {
   String errText = "";
 
   @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _nameController.dispose();
+    _passwordController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: GlobalColors.gloGreyBackgroudcolor,
@@ -70,28 +78,33 @@ class _AuthScreenState extends State<AuthScreen> {
                 child: Form(
                   key: _SignUpFrmKey,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Expanded(
-                          child: CommonInPutFeild(
-                              label: "Email",
-                              controller: _emailController,
-                              erroText: errText)),
-                      Expanded(
-                          child: CommonInPutFeild(
-                              label: "Name",
-                              controller: _nameController,
-                              erroText: errText)),
-                      Expanded(
-                          child: CommonInPutFeild(
-                              label: "Password",
-                              controller: _passwordController,
-                              erroText: errText)),
+                      CommonInPutFeild(
+                          label: "Email",
+                          controller: _emailController,
+                          erroText: errText),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      CommonInPutFeild(
+                          label: "Name",
+                          controller: _nameController,
+                          erroText: errText),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      CommonInPutFeild(
+                          label: "Password",
+                          controller: _passwordController,
+                          erroText: errText),
+                      SizedBox(
+                        height: 10.0,
+                      ),
                       SizedBox(
                         height: 50.0,
                       ),
-                      Expanded(
-                          child: CommonBtn(
-                              BtnName: "Register", OnpressedFunc: () {}))
+                      CommonBtn(BtnName: "Register", OnpressedFunc: () {})
                     ],
                   ),
                 ),
@@ -122,19 +135,21 @@ class _AuthScreenState extends State<AuthScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Expanded(
-                          child: CommonInPutFeild(
-                              label: "Email",
-                              controller: _emailController,
-                              erroText: errText)),
-                      Expanded(
-                          child: CommonInPutFeild(
-                              label: "Password",
-                              controller: _passwordController,
-                              erroText: errText)),
-                      Expanded(
-                          child:
-                              CommonBtn(BtnName: "Login", OnpressedFunc: () {}))
+                      CommonInPutFeild(
+                          label: "Email",
+                          controller: _emailController,
+                          erroText: errText),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      CommonInPutFeild(
+                          label: "Password",
+                          controller: _passwordController,
+                          erroText: errText),
+                      SizedBox(
+                        height: 50.0,
+                      ),
+                      CommonBtn(BtnName: "Login", OnpressedFunc: () {})
                     ],
                   ),
                 ),
