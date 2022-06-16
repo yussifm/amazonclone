@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, non_constant_identifier_names
 
 import 'package:amazonclone/common/Widgets/CommonBtn.dart';
 import 'package:amazonclone/common/Widgets/commonInputFiled.dart';
@@ -37,12 +37,10 @@ class _AuthScreenState extends State<AuthScreen> {
     return Scaffold(
       backgroundColor: GlobalColors.gloGreyBackgroudcolor,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: ListView(
           children: [
             Container(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(15),
               child: Text(
                 "Welcome",
                 style: TextStyle(
@@ -54,27 +52,31 @@ class _AuthScreenState extends State<AuthScreen> {
             SizedBox(
               height: 20,
             ),
-            RadioListTile(
-              value: AuthOptions.signUp,
-              tileColor: selectedOption == AuthOptions.signUp
-                  ? GlobalColors.globalBackgroundColor
-                  : GlobalColors.gloGreyBackgroudcolor,
-              groupValue: selectedOption,
-              title: Text("Create account"),
-              onChanged: (AuthOptions? selectedType) {
-                setState(() {
-                  selectedOption = selectedType;
-                });
-              },
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              child: RadioListTile(
+                value: AuthOptions.signUp,
+                tileColor: selectedOption == AuthOptions.signUp
+                    ? GlobalColors.globalBackgroundColor
+                    : GlobalColors.gloGreyBackgroudcolor,
+                groupValue: selectedOption,
+                title: Text("Create account"),
+                activeColor: GlobalColors.globalPrimaryColor,
+                onChanged: (AuthOptions? selectedType) {
+                  setState(() {
+                    selectedOption = selectedType;
+                  });
+                },
+              ),
             ),
             if (selectedOption == AuthOptions.signUp)
               Container(
-                margin: EdgeInsets.all(10),
+                margin: EdgeInsets.symmetric(horizontal: 10),
                 padding: EdgeInsets.all(15.0),
                 height: MediaQuery.of(context).size.height / 2,
-                decoration: BoxDecoration(
-                    color: GlobalColors.globalBackgroundColor,
-                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                color: selectedOption == AuthOptions.signUp
+                    ? GlobalColors.globalBackgroundColor
+                    : GlobalColors.gloGreyBackgroudcolor,
                 child: Form(
                   key: _SignUpFrmKey,
                   child: Column(
@@ -109,27 +111,30 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ),
               ),
-            RadioListTile(
-                value: AuthOptions.signIn,
-                tileColor: selectedOption == AuthOptions.signIn
-                    ? GlobalColors.globalBackgroundColor
-                    : GlobalColors.gloGreyBackgroudcolor,
-                groupValue: selectedOption,
-                title: Text("Sign-In"),
-                activeColor: GlobalColors.globalPrimaryColor,
-                onChanged: (AuthOptions? selectedType) {
-                  setState(() {
-                    selectedOption = selectedType;
-                  });
-                }),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              child: RadioListTile(
+                  value: AuthOptions.signIn,
+                  tileColor: selectedOption == AuthOptions.signIn
+                      ? GlobalColors.globalBackgroundColor
+                      : GlobalColors.gloGreyBackgroudcolor,
+                  groupValue: selectedOption,
+                  title: Text("Sign-In"),
+                  activeColor: GlobalColors.globalPrimaryColor,
+                  onChanged: (AuthOptions? selectedType) {
+                    setState(() {
+                      selectedOption = selectedType;
+                    });
+                  }),
+            ),
             if (selectedOption == AuthOptions.signIn)
               Container(
-                margin: EdgeInsets.all(10),
+                margin: EdgeInsets.symmetric(horizontal: 10),
                 padding: EdgeInsets.all(10),
                 height: MediaQuery.of(context).size.height / 2,
-                decoration: BoxDecoration(
-                    color: GlobalColors.globalBackgroundColor,
-                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                color: selectedOption == AuthOptions.signIn
+                    ? GlobalColors.globalBackgroundColor
+                    : GlobalColors.gloGreyBackgroudcolor,
                 child: Form(
                   key: _singInFrmKey,
                   child: Column(
